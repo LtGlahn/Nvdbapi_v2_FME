@@ -30,4 +30,14 @@ Will download road accidents (trafikkulykke) from NVDB api for Tromsø kommune. 
 Make sure the location of the xfsmap defintion file (*xfmapDefintion_nvdbapi2fme_V2.xml*) in the XMLFeatureReader transformer matches your local file system. 
 
 
+# nvdbapi_V2_bru_vegbru.fmw 
 
+Will download all "bru" features satisfying these filters: 
+* Brukategori (bridge category) = Vegbru 
+* Length >= 20 meter or not defined
+
+Bruer (bridges) can be quite an handfull to process correctly. Many bridges are attatched (stedfestet) to many road links at once. We show one way of dealing with this kind of problems: Pry apart the individual segments, and (hopefully) it is easier to use. (LineString instead of MultiLineString geometry, one road number and not a list of road numbers etc). The drawback is that each NVDB object may be be represented several times, one time for each individual road. 
+
+![Example of NVDB bru attatched to multiple roads][images/bru-multippelstedfesting.png]
+
+NVDB object [547334236](https://www.vegvesen.no/nvdb/api/v2/vegobjekter/60/547334236.xml) is attatched (stedfestet) both to Ev18 and Fv305. 
