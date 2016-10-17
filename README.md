@@ -1,13 +1,17 @@
 NVDB api V2 with FME
 ===============
-Sample FME workspaces to fetch various data from NVDB api. 
+Sample FME workspaces to fetch objects from [NVDB api v2](https://www.vegvesen.no/nvdb/apidokumentasjon/). 
+
+Made with FME desktop 2015.
+
+Modifying these workspace to fetch other object types is straightforward, but the property names must be explisit defined (or exposed) in an attributeCreator transformer (or attribute Exposer, if you prefer). With over 360 object types defined in NVDB data catalogue, this handiwork could become very boring and tedious very quickly. 
+
+For a more generic solution, check out @jetgeo [NVDBGML](https://github.com/jetgeo/NVDBGML/tree/master/FME). 
 
 Please note that the location of the xfsmap definition file (*xfmapDefintion_nvdbapi2fme_V2.xml*) in the XMLFeatureReader transformer must be adjusted to match your local file system. In most cases, it should work straight out of the box - if not, just pop open the "point at file" dialog, click on the file and hit OK.
 
 ![Locate xfmapfile in XML Feature M](/images/locate_xfmapfile.PNG)
  
-
-Made with FME desktop 2015.
 
 # nvdbapi_V2_Bomstasjoner.fmw 
 
