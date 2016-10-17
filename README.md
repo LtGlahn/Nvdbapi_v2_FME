@@ -4,7 +4,7 @@ Sample FME workspaces to fetch various data from NVDB api.
 
 Please note that the location of the xfsmap definition file (*xfmapDefintion_nvdbapi2fme_V2.xml*) in the XMLFeatureReader transformer must be adjusted to match your local file system. In most cases, it should work straight out of the box - if not, just pop open the "point at file" dialog, click on the file and hit OK.
 
-![Locate xfmapfile in XML Feature M](/images/locate_xfmapfile.png)
+![Locate xfmapfile in XML Feature M](/images/locate_xfmapfile.PNG)
  
 
 Made with FME desktop 2015.
