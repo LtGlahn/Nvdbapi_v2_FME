@@ -120,7 +120,7 @@
     <mapping match="lokasjon/kontraktsomrader/kontraktsomrade 
 					lokasjon/riksvegruter/riksvegrute
 					lokasjon/kommuner/kommune
-					lokasjon/vegavdelinger/vegavdelinger/vegavdeling
+					lokasjon/vegavdelinger
 					lokasjon/regioner/region
 					lokasjon/fylker/fylke">
        <attributes>
@@ -131,7 +131,7 @@
        </attributes>
     </mapping>
 
-	
+
 	<!-- Hard-wiring elements of the road reference properties --> 
     <mapping match="vegsegmenter/segment/vegreferanse">
        <attributes>
