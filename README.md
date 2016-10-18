@@ -45,9 +45,9 @@ NVDB object [547334236](https://www.vegvesen.no/nvdb/api/v2/vegobjekter/60/54733
 # nvdbapi_V2_turistveger_2geojson.fmw 
 
 Reads object type 777 Turistveger (tourist roads) from NVDB api and writes to 3 geojson-files: 
- * Full geometry 
- * Generalized with about 100m tolerance (0.001 degrees)
- * Generalized with about 1000m tolerance (0.01 degrees)
+ * Full geometry, 7mb
+ * Generalized with about 100m tolerance (0.001 degrees), 96kb
+ * Generalized with about 1000m tolerance (0.01 degrees), 23kb
  
 The generalisation method is the FME default [Ramer-Douglas-Peuker algorithm] (https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm) (also known as Dogulas or Douglas-Peuker). 
 
