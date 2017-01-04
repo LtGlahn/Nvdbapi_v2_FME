@@ -22,6 +22,10 @@ Will download all toll stations (Bomstasjoner) from NVDB api. Optionally, you ma
 
 Make sure the location of the xfsmap defintion file (*xfmapDefintion_nvdbapi2fme_V2.xml*) in the XMLFeatureReader transformer matches your local file system. 
 
+# nvdbapi_V2_bruksklasse.fmw
+
+Downloads "871 bruksklasse", and will also segment each object into smaller pieces where appropriate (no multilinestring-geometry). Each segment  has uniqe vegreferanse (road reference) hp-meter and roadlink - roadlinkposition values. 
+
 
 # nvdbapi_V2_trafikkulykker.fmw 
 
