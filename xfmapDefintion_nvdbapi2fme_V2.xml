@@ -82,7 +82,8 @@
 	
 	
 	<!-- Geometry as WKT into attribute --> 
-	<mapping match="vegobjekt/geometri/wkt 
+	
+	<mapping match="vegobjekt/geometri/wkt
 	vegobjekt/geometri/srid 
 	vegobjekt/geometri/egengeometri"> 
 	    <attributes>
@@ -116,7 +117,8 @@
      </mapping>  
 
 		
-	<!-- Some location attributes are lists --> 
+	<!-- Some location attributes are lists -->
+
     <mapping match="lokasjon/kontraktsomrader/kontraktsomrade 
 					lokasjon/riksvegruter/riksvegrute
 					lokasjon/kommuner/kommune
@@ -131,103 +133,108 @@
        </attributes>
     </mapping>
 
-
 	<!-- Hard-wiring elements of the road reference properties --> 
-    <mapping match="vegsegmenter/segment/vegreferanse">
+
+    <mapping match="vegsegmenter/segment/">
        <attributes>
           <attribute type="list">
              <name>   <literal expr="segment{}.vegref"/>  </name>
-             <value>  <extract expr="./kortform"/>  </value>
+             <value>  <extract expr="./vegreferanse/kortform"/>  </value>
           </attribute>
 
           <attribute type="list">
              <name>   <literal expr="segment{}.meter"/>  </name>
-             <value>  <extract expr="./meter"/>  </value>
+             <value>  <extract expr="./vegreferanse/meter"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.frameter"/>  </name>
-             <value>  <extract expr="./fra_meter"/>  </value>
+             <value>  <extract expr="./vegreferanse/fra_meter"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.tilmeter"/>  </name>
-             <value>  <extract expr="./til_meter"/>  </value>
+             <value>  <extract expr="./vegreferanse/til_meter"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.fylke"/>  </name>
-             <value>  <extract expr="./fylke"/>  </value>
+             <value>  <extract expr="./vegreferanse/fylke"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.hp"/>  </name>
-             <value>  <extract expr="./hp"/>  </value>
+             <value>  <extract expr="./vegreferanse/hp"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.vegkategori"/>  </name>
-             <value>  <extract expr="./kategori"/>  </value>
+             <value>  <extract expr="./vegreferanse/kategori"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.kommune"/>  </name>
-             <value>  <extract expr="./kommune"/>  </value>
+             <value>  <extract expr="./vegreferanse/kommune"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.vegnummer"/>  </name>
-             <value>  <extract expr="./nummer"/>  </value>
+             <value>  <extract expr="./vegreferanse/nummer"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.vegstatus"/>  </name>
-             <value>  <extract expr="./status"/>  </value>
+             <value>  <extract expr="./vegreferanse/status"/>  </value>
           </attribute>
-       </attributes>
-    </mapping>
-	
 
-	
-	 <!-- Hardwiring RoadLink linear reference --> 		
- <mapping match="vegsegmenter/segment/stedfesting">
-       <attributes>
+
+<!-- Stedfesting, which holds road link references --> 
           <attribute type="list">
              <name>   <literal expr="segment{}.veglenkeid"/>  </name>
-             <value>  <extract expr="./veglenkeid"/>  </value>
+             <value>  <extract expr="./stedfesting/veglenkeid"/>  </value>
           </attribute>
+
+		  <!-- For point data we dont have "fra_posisjon", "til_posisjon", just "posisjon". Uncomment as you see fit -->
+
           <attribute type="list">
-             <name>   <literal expr="segment{}.posisjon"/>  </name>
-             <value>  <extract expr="./posisjon"/>  </value>
+             <name>   <literal expr="segment{}.veglenkeposisjon"/>  </name>
+             <value>  <extract expr="./stedfesting/posisjon"/>  </value>
           </attribute>
-          <attribute type="list">
-             <name>   <literal expr="segment{}.stedfesting"/>  </name>
-             <value>  <extract expr="./kortform"/>  </value>
-          </attribute>
+
+
+		  <!-- --> 
+
+  
+<!-- Not needed, and only cause confusion
           <attribute type="list">
              <name>   <literal expr="segment{}.retning"/>  </name>
              <value>  <extract expr="./retning"/>  </value>
           </attribute>
+-->
           <attribute type="list">
-             <name>   <literal expr="segment{}.fra_posisjon"/>  </name>
-             <value>  <extract expr="./fra_posisjon"/>  </value>
+             <name>   <literal expr="segment{}.veglenke_fra_posisjon"/>  </name>
+             <value>  <extract expr="./stedfesting/fra_posisjon"/>  </value>
           </attribute>
           <attribute type="list">
-             <name>   <literal expr="segment{}.til_posisjon"/>  </name>
-             <value>  <extract expr="./til_posisjon"/>  </value>
+             <name>   <literal expr="segment{}.veglenke_til_posisjon"/>  </name>
+             <value>  <extract expr="./stedfesting/til_posisjon"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.sideposisjon"/>  </name>
-             <value>  <extract expr="./sideposisjon"/>  </value>
+             <value>  <extract expr="./stedfesting/sideposisjon"/>  </value>
           </attribute>
-       </attributes>
-    </mapping>
 
+          <attribute type="list">
+             <name>   <literal expr="segment{}.veglenke_kortform"/>  </name>
+             <value>  <extract expr="./stedfesting/kortform"/>  </value>
+          </attribute>
+		  
+          <attribute type="list">
+             <name>   <literal expr="segment{}.felt"/>  </name>
+             <value>  <extract expr="./stedfesting/felt"/>  </value>
+          </attribute>
 
 <!-- Geometri for segmentet --> 
- <mapping match="vegsegmenter/segment/">
-       <attributes>
 		  <attribute type="list">
              <name>   <literal expr="segment{}.wkt"/>  </name>
              <value>  <extract expr="./geometri/wkt"/>  </value>
           </attribute>
-
 		    
 		  
 		  <attribute type="list">
-             <name>   <literal expr="segment{}.segment_strekningslengde"/>  </name>
+             <name>   <literal expr="segment{}.strekningslengde"/>  </name>
              <value>  <extract expr="./strekningslengde"/></value>
           </attribute>
  
