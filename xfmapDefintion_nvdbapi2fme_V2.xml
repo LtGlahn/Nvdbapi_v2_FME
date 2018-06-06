@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <xfMap>
  <feature-map multi-feature-construction="false">
-    <mapping match="side/objekter/vegobjekt">
-       <feature-type> <literal expr="vegobjekt"/> </feature-type>
+    <mapping match="side/objekter/vegobjekt
+	     vegobjekt">
+           <feature-type> <literal expr="vegobjekt"/> </feature-type>
     </mapping>
  </feature-map>
  <feature-content-map>
@@ -82,8 +83,7 @@
 	
 	
 	<!-- Geometry as WKT into attribute --> 
-	
-	<mapping match="vegobjekt/geometri/wkt
+	<mapping match="vegobjekt/geometri/wkt 
 	vegobjekt/geometri/srid 
 	vegobjekt/geometri/egengeometri"> 
 	    <attributes>
@@ -117,12 +117,11 @@
      </mapping>  
 
 		
-	<!-- Some location attributes are lists -->
-
+	<!-- Some location attributes are lists --> 
     <mapping match="lokasjon/kontraktsomrader/kontraktsomrade 
 					lokasjon/riksvegruter/riksvegrute
 					lokasjon/kommuner/kommune
-					lokasjon/vegavdelinger
+					lokasjon/vegavdelinger/vegavdelinger/vegavdeling
 					lokasjon/regioner/region
 					lokasjon/fylker/fylke">
        <attributes>
@@ -133,146 +132,168 @@
        </attributes>
     </mapping>
 
+	
 	<!-- Hard-wiring elements of the road reference properties --> 
-
-    <mapping match="vegsegmenter/segment/">
+    <mapping match="vegsegmenter/segment/vegreferanse">
        <attributes>
           <attribute type="list">
              <name>   <literal expr="segment{}.vegref"/>  </name>
-             <value>  <extract expr="./vegreferanse/kortform"/>  </value>
+             <value>  <extract expr="./kortform"/>  </value>
           </attribute>
 
           <attribute type="list">
              <name>   <literal expr="segment{}.meter"/>  </name>
-             <value>  <extract expr="./vegreferanse/meter"/>  </value>
+             <value>  <extract expr="./meter"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.frameter"/>  </name>
-             <value>  <extract expr="./vegreferanse/fra_meter"/>  </value>
+             <value>  <extract expr="./fra_meter"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.tilmeter"/>  </name>
-             <value>  <extract expr="./vegreferanse/til_meter"/>  </value>
+             <value>  <extract expr="./til_meter"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.fylke"/>  </name>
-             <value>  <extract expr="./vegreferanse/fylke"/>  </value>
+             <value>  <extract expr="./fylke"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.hp"/>  </name>
-             <value>  <extract expr="./vegreferanse/hp"/>  </value>
+             <value>  <extract expr="./hp"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.vegkategori"/>  </name>
-             <value>  <extract expr="./vegreferanse/kategori"/>  </value>
+             <value>  <extract expr="./kategori"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.kommune"/>  </name>
-             <value>  <extract expr="./vegreferanse/kommune"/>  </value>
+             <value>  <extract expr="./kommune"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.vegnummer"/>  </name>
-             <value>  <extract expr="./vegreferanse/nummer"/>  </value>
+             <value>  <extract expr="./nummer"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.vegstatus"/>  </name>
-             <value>  <extract expr="./vegreferanse/status"/>  </value>
+             <value>  <extract expr="./status"/>  </value>
           </attribute>
+       </attributes>
+    </mapping>
+	
 
-
-<!-- Stedfesting, which holds road link references --> 
+	
+	 <!-- Hardwiring RoadLink linear reference --> 		
+ <mapping match="vegsegmenter/segment/stedfesting">
+       <attributes>
           <attribute type="list">
              <name>   <literal expr="segment{}.veglenkeid"/>  </name>
-             <value>  <extract expr="./stedfesting/veglenkeid"/>  </value>
+             <value>  <extract expr="./veglenkeid"/>  </value>
           </attribute>
-
-		  <!-- For point data we dont have "fra_posisjon", "til_posisjon", just "posisjon". Uncomment as you see fit -->
-
           <attribute type="list">
-             <name>   <literal expr="segment{}.veglenkeposisjon"/>  </name>
-             <value>  <extract expr="./stedfesting/posisjon"/>  </value>
+             <name>   <literal expr="segment{}.posisjon"/>  </name>
+             <value>  <extract expr="./posisjon"/>  </value>
           </attribute>
-
-
-		  <!-- --> 
-
-  
-<!-- Not needed, and only cause confusion
+          <attribute type="list">
+             <name>   <literal expr="segment{}.stedfesting"/>  </name>
+             <value>  <extract expr="./kortform"/>  </value>
+          </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.retning"/>  </name>
              <value>  <extract expr="./retning"/>  </value>
           </attribute>
--->
           <attribute type="list">
-             <name>   <literal expr="segment{}.veglenke_fra_posisjon"/>  </name>
-             <value>  <extract expr="./stedfesting/fra_posisjon"/>  </value>
+             <name>   <literal expr="segment{}.fra_posisjon"/>  </name>
+             <value>  <extract expr="./fra_posisjon"/>  </value>
           </attribute>
           <attribute type="list">
-             <name>   <literal expr="segment{}.veglenke_til_posisjon"/>  </name>
-             <value>  <extract expr="./stedfesting/til_posisjon"/>  </value>
+             <name>   <literal expr="segment{}.til_posisjon"/>  </name>
+             <value>  <extract expr="./til_posisjon"/>  </value>
           </attribute>
           <attribute type="list">
              <name>   <literal expr="segment{}.sideposisjon"/>  </name>
-             <value>  <extract expr="./stedfesting/sideposisjon"/>  </value>
-          </attribute>
-
-          <attribute type="list">
-             <name>   <literal expr="segment{}.veglenke_kortform"/>  </name>
-             <value>  <extract expr="./stedfesting/kortform"/>  </value>
-          </attribute>
-		  
-          <attribute type="list">
-             <name>   <literal expr="segment{}.felt"/>  </name>
-             <value>  <extract expr="./stedfesting/felt"/>  </value>
-          </attribute>
-
-<!-- Geometri for segmentet --> 
-		  <attribute type="list">
-             <name>   <literal expr="segment{}.wkt"/>  </name>
-             <value>  <extract expr="./geometri/wkt"/>  </value>
-          </attribute>
-		    
-		  
-		  <attribute type="list">
-             <name>   <literal expr="segment{}.strekningslengde"/>  </name>
-             <value>  <extract expr="./strekningslengde"/></value>
-          </attribute>
- 
-		  </attributes>
-    </mapping>
-	
-	
-	
-	
-	<!-- Relationships to other objects (Assosiasjoner) 
-	
-	The most common used realtion is COMPOSITION, with two possibilities
-		 o This object's daughters: (I am composed of ... ) 
-			<relasjon rel="BESTAR_AV" kardinalitet="EN_TIL_MANGE"/>
-			
-			
-		 o This object's "Mother": (I am part of ... ) 
-			<relasjon rel="ER_DEL_AV" kardinalitet="MANGE_TIL_EN"/>
-
-	Norwegian "kardinalitet" == Cardinality. "MANGE" == Many, "TIL" == to, "EN" == One
-	
-	Please note that NVDB formally supports other kinds of associations, but it's rather
-	hard to find valid examples... Implementing support for them is 
-	straightforward, though: Just expose the name of the list in the XMLFeatureReader, in exactly 
-	the samme manner the lists BESTAR_AV{} and ER_DEL_AV{} are exposed... 
-
-	-->
-	
-	<!-- DEBUG 
-    <mapping match="vegObjekt/assosiasjoner/assosiasjon/relasjon">
-       <attributes>
-          <attribute type="list">
-             <name>   <extract expr="@rel"/> </name>
-             <value>  <extract expr="@uri"/>  </value>
+             <value>  <extract expr="./sideposisjon"/>  </value>
           </attribute>
        </attributes>
     </mapping>
+
+
+<!-- Geometri for segmentet --> 
+ <mapping match="vegsegmenter/segment/">
+       <attributes>
+	  <attribute type="list">
+             <name>   <literal expr="segment{}.wkt"/>  </name>
+             <value>  <extract expr="./geometri/wkt"/>  </value>
+          </attribute>
+
+		    
+		  
+	  <attribute type="list">
+             <name>   <literal expr="segment{}.segment_strekningslengde"/>  </name>
+             <value>  <extract expr="./strekningslengde"/></value>
+          </attribute>
+ 
+	</attributes>
+    </mapping>
+	
+	
+	
+	
+	<!-- Relationships to other objects (relasjoner) 
+	
+	Relasjon fra dette vegobjektet -> eventuelle barn
+	
+	-->
+	
+    <mapping match="relasjoner/barn/barn">
+       <attributes>
+          <attribute type="list">
+             <name>   <literal expr="barn{}.barn_id"/> </name>
+             <value>  <extract expr="./vegobjekter/id"/>  </value>
+          </attribute>
+
+
+          <attribute type="list">
+             <name>   <literal expr="barn{}.barn_typeid"/> </name>
+             <value>  <extract expr="./type/id"/>  </value>
+          </attribute>
+
+          <attribute type="list">
+             <name>   <literal expr="barn{}.barn_typenavn"/> </name>
+             <value>  <extract expr="./type/navn"/>  </value>
+          </attribute>
+	  
+	</attributes>
+    </mapping>
+
+<!-- Relasjon fra dette vegobjektet -> eventuelle forelder (evt foreldre). 
+   Strengt tatt skal det kun være 1 forelder, men med NVDB vet man aldri helt... )
+	
 -->
+
+    <mapping match="relasjoner/foreldre/forelder">
+       <attributes>
+          <attribute type="list">
+             <name>   <literal expr="forelder{}.forelder_id"/> </name>
+             <value>  <extract expr="./vegobjekter/id"/>  </value>
+          </attribute>
+
+
+          <attribute type="list">
+             <name>   <literal expr="forelder{}.forelder_typeid"/> </name>
+             <value>  <extract expr="./type/id"/>  </value>
+          </attribute>
+
+          <attribute type="list">
+             <name>   <literal expr="forelder{}.forelder_typenavn"/> </name>
+             <value>  <extract expr="./type/navn"/>  </value>
+          </attribute>
+	  
+	</attributes>
+    </mapping>
+    
+    
+    
+<!-- -->
  
 <!-- Explisitely giving the features geometry in a separate chain of transformers 
 	(CoordinateSystemSetter+geometryReplacer). It really should be very 
