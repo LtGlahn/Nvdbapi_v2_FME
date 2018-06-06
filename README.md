@@ -2,7 +2,7 @@ NVDB api V2 with FME
 ===============
 Sample FME workspaces to fetch objects from [NVDB api v2](https://www.vegvesen.no/nvdb/apidokumentasjon/). 
 
-Made with FME desktop 2015.
+Made with FME desktop 2017.
 
 Modifying these workspace to fetch other object types is straightforward, but the property names must be explisit defined (or exposed) in an attributeCreator transformer (or attribute Exposer, if you prefer). With over 360 object types defined in NVDB data catalogue, this handiwork could become very boring and tedious very quickly. 
 

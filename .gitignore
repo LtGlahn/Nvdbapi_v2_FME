@@ -1,5 +1,5 @@
 # Ignoring log and recovery files
-.log
-.recover
+*.log
+*.recover
 junk/
 skrot/
