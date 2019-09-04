@@ -61,6 +61,16 @@
         </attributes>
 	</mapping>
 	
+	<mapping match="vegobjekt/metadata/versjon"> 
+	    <attributes>
+           <attribute>
+              <name>   <literal expr="versjon"/> </name>
+              <value>  <extract expr="."/>  </value>
+           </attribute>       
+        </attributes>
+	</mapping>
+    
+    
 	<mapping match="vegobjekt/id"> 
 	    <attributes>
            <attribute>
