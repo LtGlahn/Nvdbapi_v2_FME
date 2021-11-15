@@ -1,4 +1,8 @@
-NVDB api V2 with FME
+# OBSOLETE - see https://github.com/LtGlahn/nvdbapi-v3-FME 
+
+Version 2 of NVDB api is obsolete, please use version 3 and the new FME workspaces found here https://github.com/LtGlahn/nvdbapi-v3-FME
+
+## NVDB api V2 with FME
 ===============
 Sample FME workspaces to fetch objects from [NVDB api v2](https://www.vegvesen.no/nvdb/apidokumentasjon/). 
 
